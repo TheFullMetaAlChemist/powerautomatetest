@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Test Data</title>
+</head>
+<body>
+    <h2>Student Test Data Entry</h2>
+    <form id="dataForm">
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="score">Score:</label>
+        <input type="number" id="score" required><br><br>
+
+        <label for="grade">Grade:</label>
+        <input type="text" id="grade" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("dataForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const score = document.getElementById("score").value;
+            const grade = document.getElementById("grade").value;
+
+            fetch("YOUR_POWER_AUTOMATE_WEBHOOK_URL", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    Name: name,
+                    Score: score,
+                    Grade: grade
+                })
+            })
+            .then(response => response.json())
+            .then(data => alert("Data sent successfully!"))
+            .catch(error => alert("Error sending data."));
+        });
+    </script>
+</body>
+</html>
