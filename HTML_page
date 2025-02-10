@@ -26,7 +26,7 @@
             const score = document.getElementById("score").value;
             const grade = document.getElementById("grade").value;
 
-            fetch("YOUR_POWER_AUTOMATE_WEBHOOK_URL", {
+            fetch("https://prod-192.westeurope.logic.azure.com:443/workflows/e154537c6769409dae9947dfe56a2a4a/triggers/manual/paths/invoke?api-version=2016-06-01", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
